@@ -20,6 +20,22 @@
     padding: .5rem;
     background-color: hsl(225,6%,25%);
 }
+.editor-container.close{
+    flex-grow: 0;
+}
+
+.editor-container.close.CodeMirror-scroll{
+    position: absolute;
+    overflow: hidden !important;
+}
+
+.open-close-btn{
+    margin-left: .5rem;
+    /* background:none; */
+    border:none;
+    color:white;
+    cursor:pointer;
+}
 
 .editor-title{
     display: flex;
@@ -30,10 +46,11 @@
     border-top-right-radius: .5rem;
     border-top-left-radius: .5rem;
 }
-.codeMirror{
+.CodeMirror{
     height: 100% !important;
 }
-.codemirror-wrapper{
+
+.code-mirror-wrapper{
     flex-grow: 1;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;

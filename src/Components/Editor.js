@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../index.css'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
@@ -6,6 +6,9 @@ import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
 import {Controlled as ControlledEditor} from 'react-codemirror2'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCompressAlt,faExpandAlt} from '@fortawesome/free-solid-svg-icons'
+
 
 function Editor(props) {
     
@@ -16,6 +19,7 @@ function Editor(props) {
         onChange
     }=props
     
+    const [open,setOpen]=useState(true)
 
     function handleChange(editor, data,value){
         onChange(value)
@@ -23,22 +27,29 @@ function Editor(props) {
 
 
     return (
-        <div className="editor-container">
+        <div className={`editor-container ${open ? ' ' :'close'}`}>
         <div className="editor-title">
         {displayName}
-        <button>O</button>
+        <button
+            type="button"
+            className="open-close-btn"
+            onClick={()=>setOpen(prevOpen=> !prevOpen)}
+            Alt="-"
+        >
+            <FontAwesomeIcon icon = {open ? 'faCompressAlt' : 'faExpandAlt'} />
+        </button>
         
         </div>
 
         <ControlledEditor
         onBeforeChange={handleChange}
         value={value}
-        className="codemirror-wrapper"
+        className="code-mirror-wrapper"
         options={{
             lineWrapping:true,
-            line:true,
+            lint:true,
             mode:language,
-            lineNumber:true,
+            lineNumbers:true,
             theme:'material'
         }}
         
