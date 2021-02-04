@@ -36,7 +36,7 @@ function Editor(props) {
             onClick={()=>setOpen(prevOpen=> !prevOpen)}
             Alt="-"
         >
-            <FontAwesomeIcon icon = {open ? 'faCompressAlt' : 'faExpandAlt'} />
+            <FontAwesomeIcon icon = {open ? faCompressAlt : faExpandAlt} />
         </button>
         
         </div>
